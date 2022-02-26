@@ -150,6 +150,7 @@ public class MainActivity extends AppCompatActivity {
 
                 double no = Double.parseDouble(tvResult.getText().toString())/100;
                 tvResult.setText(no+"");
+
                 isClickOperation = true;
 
 
