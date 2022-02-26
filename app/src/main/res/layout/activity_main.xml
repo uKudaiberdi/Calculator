@@ -50,11 +50,15 @@
 
             <com.google.android.material.button.MaterialButton
                 android:text="+/-"
+                android:id="@+id/btn_plus_minus"
+                android:onClick="onNumberClick"
                 android:layout_marginHorizontal="18dp"
                 style="@style/Grey.Button" />
 
             <com.google.android.material.button.MaterialButton
                 android:text="%"
+                android:id="@+id/btn_procent"
+                android:onClick="onNumberClick"
                 android:layout_marginEnd="18dp"
                 style="@style/Grey.Button" />
 
@@ -98,11 +102,9 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_multiplication"
+                style="@style/Orange.Button"
                 android:onClick="onOperationClick"
-                android:text="×"
-                style="@style/Orange.Button" />
-
-
+                android:text="*" />
 
 
         </LinearLayout>
@@ -203,6 +205,8 @@
 
             <com.google.android.material.button.MaterialButton
                 android:text="."
+                android:id="@+id/btn_tochka"
+                android:onClick="onNumberClick"
                 android:layout_marginEnd="18dp"
                 style="@style/Dark_Grey.Button" />
 

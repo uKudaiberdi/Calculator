@@ -9,8 +9,9 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     private TextView tvResult;
-    private Integer firstVar, secondVar;
+    private double  firstVar, secondVar;
     private Boolean isClickOperation = false;
+    private String operation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -131,30 +132,77 @@ public class MainActivity extends AppCompatActivity {
                 }
                 isClickOperation = false;
                 break;
+            case R.id.btn_tochka:
+                if (!tvResult.getText().toString().contains(".")){
+                    tvResult.append(".");
+                }
+                break;
             case R.id.btn_clear:
                 tvResult.setText("0");
                 break;
+            case R.id.btn_plus_minus:
+                firstVar = Double.parseDouble(tvResult.getText().toString());
+                Double result = Double.valueOf(0);
+                result = firstVar *= -1;
+                tvResult.setText(result.toString());
+                break;
+            case R.id.btn_procent:
+
+                double no = Double.parseDouble(tvResult.getText().toString())/100;
+                tvResult.setText(no+"");
+                isClickOperation = true;
+
+
         }
     }
 
     public void onOperationClick(View view) {
+
         switch (view.getId()) {
             case R.id.btn_plus:
-                firstVar = Integer.parseInt(tvResult.getText().toString());
+                firstVar = Double.parseDouble(tvResult.getText().toString());
                 isClickOperation = true;
+                operation = "+";
                 break;
             case R.id.btn_minus:
+                firstVar = Double.parseDouble(tvResult.getText().toString());
+                isClickOperation = true;
+                operation = "-";
                 break;
             case R.id.btn_multiplication:
+                firstVar =  Double.parseDouble(tvResult.getText().toString());
+                isClickOperation = true;
+                operation = "*";
                 break;
+
             case R.id.btn_division:
+                firstVar =Double.parseDouble(tvResult.getText().toString());
+                isClickOperation = true;
+                operation = "÷";
                 break;
             case R.id.btn_equal:
-                secondVar = Integer.parseInt(tvResult.getText().toString());
-                Integer result =  firstVar + secondVar;
+                secondVar = Double.parseDouble(tvResult.getText().toString());
+                Double result = Double.valueOf(0);
+                switch (operation){
+                    case "+":
+                        result =  firstVar + secondVar;
+                        break;
+                    case "-":
+                        result = firstVar - secondVar;
+                        break;
+                    case "*":
+                        result =  firstVar * secondVar;
+                        break;
+                    case "÷":
+                        result = firstVar / secondVar;
+                        break;
+                    default:
+                        throw new IllegalStateException("Unexpected value: " + operation);
+                }
                 tvResult.setText(result.toString());
                 isClickOperation = true;
                 break;
+
 
 
         }
